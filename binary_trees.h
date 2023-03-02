@@ -1,7 +1,11 @@
 #ifndef _BINARY_TREES_H_
 #define _BINARY_TREES_H_
-#include <stdlib.h>
 
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <limits.h>
 
 /**
  * struct binary_tree_s - Binary tree node
@@ -36,6 +40,20 @@ typedef struct node
 	binary_tree_t *val;
 	struct node *next;
 } queue;
+
+/**
+ * struct link_s - structure for advanced tasks
+ *
+ * @n: depth of node specified
+ * @node: node of tree to store
+ * @next: next node of the linked list
+ */
+typedef struct link_s
+{
+	size_t n;
+	struct binary_tree_s const *node;
+	struct link_s *next;
+} link_t;
 
 queue *pop(queue **head, queue **tail);
 queue *push(queue **head, queue **tail, binary_tree_t *node);
@@ -81,7 +99,7 @@ avl_t *array_to_avl(int *array, size_t size);
 avl_t *avl_remove(avl_t *root, int value);
 avl_t *sorted_array_to_avl(int *array, size_t size);
 int binary_tree_is_heap(const binary_tree_t *tree);
-heap_t *heap_insert(heap_t **root, int value)
+heap_t *heap_insert(heap_t **root, int value);
 heap_t *array_to_heap(int *array, size_t size);
 int heap_extract(heap_t **root);
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
